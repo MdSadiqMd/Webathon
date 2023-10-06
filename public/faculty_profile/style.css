@@ -1,0 +1,96 @@
+ul {
+    list-style: none;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.Profile-photo {
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+    border: 4px solid #000;
+    background-image: url("https://picsum.photos/200");
+    background-size: cover;
+    overflow: hidden;
+}
+
+table {
+    margin-top: 5px;
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    border-color: #000;
+    color: #000;
+}
+
+.attendence > div {
+    border: 1px solid #000;
+    border-radius: 2px;
+    display: inline-block;
+    padding: 5px;
+    margin: 5px;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 100%), 1fr);
+    position: relative;
+    transition: transform 0.2s, font-size 0.2s;
+    cursor: pointer;
+}
+
+.attendence > div:hover {
+    transform: scale(1.1);
+}
+
+.attendence > div span {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 2px 5px;
+    border-radius: 2px;
+}
+
+.attendence > div.selected span {
+    display: block;
+}
+
+.leftcontainer {
+    padding-right: 10px;
+}
+
+.rightcontainer {
+    padding-left: 10px;
+    border-left: 2px solid #000;
+    justify-content: right;
+    align-items: right;
+}
+
+input[type="text"], input[type="date"], select {
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
