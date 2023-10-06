@@ -2,6 +2,11 @@ ul {
     list-style: none;
 }
 
+.container-wrapper {
+    display: flex;
+    border-left: 2px solid #000; /* Middle border */
+}
+
 .container {
     width: 100%;
     display: flex;
@@ -69,11 +74,12 @@ th {
 
 .leftcontainer {
     padding-right: 10px;
+    position: fixed; /* Fixed positioning for the left container */
 }
 
 .rightcontainer {
     padding-left: 10px;
-    border-left: 2px solid #000;
+    margin-left: 320px; /* Adjust this value to match the width of the left container */
     justify-content: right;
     align-items: right;
 }
