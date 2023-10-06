@@ -15,7 +15,8 @@
     "axe/parsing": [
       "default",
       {
-        "duplicate-id": "off"
+        "duplicate-id": "off",
+        "duplicate-id-aria": "off"
       }
     ]
   }
