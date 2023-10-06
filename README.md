@@ -31,7 +31,7 @@ If you want to work on this project locally, you can clone the repository to you
    ```
    git clone https://github.com/MdSadiqMd/Webathon
    ```
-   
+
 ## Installing Dependencies
 
 To install the project dependencies, run the following command using npm
@@ -52,13 +52,6 @@ To Run the Application go to the main Frontend File Index.html and run it throug
     GET /api/users: Fetch users from the database.
     POST /api/users: Create a new user and save it.
 4.Run tests with npm test.
-
-## Contributing
-
-Explain how others can contribute to your project. Include guidelines for reporting bugs, suggesting enhancements, or submitting pull requests.
-Certainly! Here's a basic template for contributing guidelines that you can include in your project's README or CONTRIBUTING.md file:
-
----
 
 # Contributing Guidelines
 
