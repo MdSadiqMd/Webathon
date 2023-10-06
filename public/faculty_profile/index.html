@@ -128,82 +128,86 @@
                         <th>Room No</th>
                         <th>Timings</th>
                     </tr>
-                    </thead>
-                    <tbody id="absenceTableBody">
-                        <!-- Table rows for absences will be dynamically added here -->
-                    </tbody>
-                <thead/>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>08/06/2004</td>
+                        <td>320</td>
+                        <td>2:30-5:30</td>
+                    </tr>
+                </tbody>
             </table>
         </div>
-        <h2>Student Attendance</h2>
-        <div class="attendence">
-            <div>218W1A0401<span>❌</span></div>
-            <div>218W1A0402<span>❌</span></div>
-            <div>218W1A0403<span>❌</span></div>
-            <div>218W1A0404<span>❌</span></div>
-            <div>218W1A0405<span>❌</span></div>
-            <div>218W1A0406<span>❌</span></div>
-            <div>218W1A0407<span>❌</span></div>
-            <div>218W1A0408<span>❌</span></div>
-            <div>218W1A0409<span>❌</span></div>
-            <div>218W1A0410<span>❌</span></div>
-            <div>218W1A0411<span>❌</span></div>
-            <div>218W1A0412<span>❌</span></div>
-            <div>218W1A0413<span>❌</span></div>
-            <div>218W1A0414<span>❌</span></div>
-            <div>218W1A0415<span>❌</span></div>
-            <div>218W1A0416<span>❌</span></div>
-            <div>218W1A0417<span>❌</span></div>
-            <div>218W1A0418<span>❌</span></div>
-            <div>218W1A0419<span>❌</span></div>
-            <div>218W1A0420<span>❌</span></div>
-            <div>218W1A0421<span>❌</span></div>
-            <div>218W1A0422<span>❌</span></div>
-            <div>218W1A0423<span>❌</span></div>
-            <div>218W1A0424<span>❌</span></div>
-            <div>218W1A0425<span>❌</span></div>
+        <div class="studentAttendance">
+            <h2>Student Attendance</h2>
+            <div class="attendence">
+                <!-- Add more divs here -->
+                <div>218W1A0401<span>❌</span></div>
+                <div>218W1A0402<span>❌</span></div>
+                <div>218W1A0403<span>❌</span></div>
+                <div>218W1A0404<span>❌</span></div>
+                <div>218W1A0405<span>❌</span></div>
+                <div>218W1A0406<span>❌</span></div>
+                <div>218W1A0407<span>❌</span></div>
+                <div>218W1A0408<span>❌</span></div>
+                <div>218W1A0409<span>❌</span></div>
+                <div>218W1A0410<span>❌</span></div>
+                <div>218W1A0411<span>❌</span></div>
+                <div>218W1A0412<span>❌</span></div>
+                <div>218W1A0413<span>❌</span></div>
+                <div>218W1A0414<span>❌</span></div>
+                <div>218W1A0415<span>❌</span></div>
+                <div>218W1A0416<span>❌</span></div>
+                <div>218W1A0417<span>❌</span></div>
+                <div>218W1A0418<span>❌</span></div>
+                <div>218W1A0419<span>❌</span></div>
+                <div>218W1A0420<span>❌</span></div>
+                <div>218W1A0421<span>❌</span></div>
+                <div>218W1A0422<span>❌</span></div>
+                <div>218W1A0423<span>❌</span></div>
+                <div>218W1A0424<span>❌</span></div>
+                <div>218W1A0425<span>❌</span></div>
+            </div>
+            <form id="absenceForm">
+                <label for="CourseName">Course Name:</label>
+                <input type="text" id="CourseName" name="CourseName" required>
+
+                <label for="ExamDate">Exam Date:</label>
+                <input type="date" id="ExamDate" name="ExamDate" required>
+
+                <label for="examType">Exam Type:</label>
+                <select id="examType" name="examType" required>
+                    <option value="SEM-END">SEM-END</option>
+                    <option value="SESSIONAL">SESSIONAL</option>
+                    <option value="ASSIGNMENT">ASSIGNMENT</option>
+                </select>
+
+                <button type="button" id="markAbsenceBtn">Mark Absence</button>
+                <p id="errorMsg" style="color: red;"></p>
+            </form>
+            <table>
+                <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Course</th>
+                    <th>Exam Date</th>
+                    <th>Exam Type</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody id="absenceTableBody">
+                    <!-- Table rows for absences will be dynamically added here -->
+                </tbody>
+            </table>
         </div>
-        <form id="absenceForm">
-            <label for="CourseName">Course Name:</label>
-            <input type="text" id="CourseName" name="CourseName" required>
-
-            <label for="ExamDate">Exam Date:</label>
-            <input type="date" id="ExamDate" name="ExamDate" required>
-
-            <label for="examType">Exam Type:</label>
-            <select id="examType" name="examType" required>
-                <option value="SEM-END">SEM-END</option>
-                <option value="SESSIONAL">SESSIONAL</option>
-                <option value="ASSIGNMENT">ASSIGNMENT</option>
-            </select>
-
-            <button type="button" id="markAbsenceBtn">Mark Absence</button>
-            <p id="errorMsg" style="color: red;"></p>
-        </form>
-        <table>
-            <thead>
-            <tr>
-                <th>S.No</th>
-                <th>Course</th>
-                <th>Exam Date</th>
-                <th>Exam Type</th>
-                <th>Action</th> 
-            </tr>
-            </thead>
-            <tbody id="absenceTableBody">
-                <!-- Table rows for absences will be dynamically added here -->
-            </tbody>
-        </table>
     </div>
 </div>
 <script>
-    // Add event listener for marking absence
     document.getElementById("markAbsenceBtn").addEventListener("click", function () {
         const courseName = document.getElementById("CourseName").value;
         const examDate = document.getElementById("ExamDate").value;
         const examType = document.getElementById("examType").value;
 
-        // Get the selected student IDs by checking the clicked divs
         const selectedStudentIDs = [];
         document.querySelectorAll('.attendence > div.selected').forEach(div => {
             const studentID = div.textContent.trim();
@@ -214,11 +218,8 @@
             const table = document.querySelector("table");
             const tbody = table.querySelector("tbody");
 
-            // Create rows for each selected student
             selectedStudentIDs.forEach(studentID => {
                 const row = document.createElement("tr");
-
-                // Populate the row with cells
                 row.innerHTML = `
                     <td>${studentID}</td>
                     <td>${courseName}</td>
@@ -226,20 +227,14 @@
                     <td>${examType}</td>
                     <td><button class="deleteBtn">Delete</button></td>
                 `;
-
-                // Add the row to the table body
-                tbody.appendChild(row);
+                document.getElementById("absenceTableBody").appendChild(row);
             });
 
-            // Clear the form inputs
             document.getElementById("CourseName").value = "";
             document.getElementById("ExamDate").value = "";
             document.getElementById("examType").value = "SEM-END";
-
-            // Clear the error message
             document.getElementById("errorMsg").textContent = "";
         } else {
-            // Display an error message if any of the form fields are empty or no students are selected
             if (selectedStudentIDs.length === 0) {
                 document.getElementById("errorMsg").textContent = "Please select one or more students before marking absence.";
             } else {
@@ -248,17 +243,13 @@
         }
     });
 
-    // Add event listener for delete button clicks
-    document.querySelector("table").addEventListener("click", function (e) {
+    document.getElementById("absenceTableBody").addEventListener("click", function (e) {
         if (e.target.classList.contains("deleteBtn")) {
             e.target.closest("tr").remove();
         }
     });
-
-    // Add event listeners for selecting students
     document.querySelectorAll('.attendence > div').forEach(div => {
         div.addEventListener("click", () => {
-            // Toggle the "selected" class on click to allow multiple selections
             div.classList.toggle("selected");
         });
     });
