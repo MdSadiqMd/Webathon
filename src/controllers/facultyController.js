@@ -1,4 +1,4 @@
-const User = require('../models/User'); // Import the User model
+const User = require('../models/user'); // Import the User model
 const Schedule = require('../models/Schedule'); // Import the Schedule model
 const Absentee = require('../models/Absentee'); // Import the Absentee model
 
