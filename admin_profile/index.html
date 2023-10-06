@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Admin Dashboard</h1>
+    </header>
+    <main>
+        <section class="faculty-requests">
+            <h2>Faculty Requests</h2>
+            <div class="faculty-request-card">
+                <p>Name: John Doe</p>
+                <p>Request: Adjust with some faculty</p>
+                <button class="accept-button">Accept</button>
+                <button class="decline-button">Decline</button>
+            </div>
+            <!-- More faculty request cards can be added dynamically -->
+        </section>
+        
+        <section class="control-panel">
+            <h2>Control Panel</h2>
+            <div class="control-panel-options">
+                <label for="branch">Branch:</label>
+                <select id="branch" name="branch">
+                    <option value="branch1">Branch 1</option>
+                    <option value="branch2">Branch 2</option>
+                    <!-- Add more branches as needed -->
+                </select>
+                
+                <label for="exam-type">Exam Type:</label>
+                <select id="exam-type" name="exam-type">
+                    <option value="mid-exam">Mid-Exam</option>
+                    <option value="sem-end-exam">SEM-End Exam</option>
+                </select>
+                
+                <label for="exam-date">Exam Date:</label>
+                <input type="date" id="exam-date" name="exam-date">
+                
+                <button id="view-room-list">View Room List</button>
+            </div>
+        </section>
+        
+        <section class="room-list">
+            <h2>Room List</h2>
+            <ul id="room-list">
+                <!-- Room list items will be rendered dynamically from the backend -->
+            </ul>
+        </section>
+    </main>
+    <script src="admin.js"></script>
+</body>
+</html>
