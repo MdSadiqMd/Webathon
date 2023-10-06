@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="./login.css">
+    
+</head>
+
+    
+<body>
+    <div class="header-container">
+        <img class="imagesize " src="VRSEC-Main-Header.png" alt="Header Image">
+    </div>
+    <div class="start">
+        <div class="login-container">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                
+                <label for="userType">User Type:</label>
+                <select id="userType" name="userType" onchange="toggleUserTypeOptions()">
+                    
+                    <option value="Faculty">Faculty</option>
+                    <option value="Incharge">Incharge</option>
+                    <option value="Admin">Admin</option>
+                </select>
+                
+                <!-- Additional options for Faculty -->
+                <div id="facultyOptions" style="display: none;">
+                    <label for="facultyRole">Faculty Role:</label>
+                    <select id="facultyRole" name="facultyRole">
+                        <option value="Professor">Professor</option>
+                        <option value="AssistantProfessor">Assistant Professor</option>
+                    </select>
+                </div>
+                
+                <!-- Additional options for Incharge -->
+                <div id="inchargeOptions" style="display: none;">
+                    <label for="department">Department:</label>
+                    <select id="department" name="department">
+                        <option value="CSE">CSE</option>
+                        <option value="IT">IT</option>
+                        <option value="AIDS">AIDS</option>
+                        <option value="ECE">ECE</option>
+                        <option value="EIE">EIE</option>
+                        <option value="EEE">EEE</option>
+                        <option value="CIVIL">CIVIL</option>
+                        <option value="MECH">MECH</option>
+                    </select>
+                </div>
+                
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function toggleUserTypeOptions() {
+            const userType = document.getElementById('userType').value;
+            const facultyOptions = document.getElementById('facultyOptions');
+            const inchargeOptions = document.getElementById('inchargeOptions');
+
+            if (userType === 'Faculty') {
+                facultyOptions.style.display = 'block';
+                inchargeOptions.style.display = 'none';
+            } else if (userType === 'Incharge') {
+                inchargeOptions.style.display = 'block';
+                facultyOptions.style.display = 'none';
+            } else {
+                facultyOptions.style.display = 'none';
+                inchargeOptions.style.display = 'none';
+            }
+        }
+    </script>
+
+    <script>
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Check user credentials
+            if (username === 'user1' && password === 'password1') {
+                alert('Login successful for User 1');
+                // Redirect to User 1's dashboard or perform any other action
+            } else if (username === 'user2' && password === 'password2') {
+                alert('Login successful for User 2');
+                // Redirect to User 2's dashboard or perform any other action
+            } else if (username === 'user3' && password === 'password3') {
+                alert('Login successful for User 3');
+                // Redirect to User 3's dashboard or perform any other action
+            } else {
+                alert('Invalid username or password. Please try again.');
+            }
+        }
+    </script>
+   
+</body>
+</html>

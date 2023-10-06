@@ -1,64 +1,96 @@
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, sans-serif;
+    background-color: #6499E9;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #04364a;
 }
 
-.login-container {
-    display: flex;
-    width: 100%;
-    max-width: 1200px;
-}
-
-.login-image {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #007BFF;
-}
-
-.login-image img {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-}
-
-.login-form {
-    flex: 1;
+header {
+    background-color: #B931FC;
+    color: #fff;
+    text-align: center;
     padding: 20px;
-    background-color: #fff;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    max-width: 500px;
+    margin: 10px auto;
+    padding: 20px;
+    background: linear-gradient(45deg, #FFFFFF, #FFFFFF);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #191D88;
+}
+
+label {
+    font-weight: bold;
+    color: #191D88;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+    width: 95%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
     border-radius: 5px;
 }
 
-.login-form h2 {
+button {
+    background-color: #2E97A7;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
     text-align: center;
 }
 
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    font-weight: bold;
-}
-
-.form-group input, .form-group select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-}
-
-.form-group input[type="submit"] {
-    background-color: #007BFF;
-    color: #fff;
+select {
+    background-color: #fff;
+    color: #333;
+    font-size: 16px;
+    appearance: none;
+    background-image: url("./download.png");
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-size: 20px;
     cursor: pointer;
+}
+
+/* 3D Effect */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+select:focus {
+    border-color: #2E97A7;
+    box-shadow: 0 0 10px rgba(46, 151, 167, 0.5);
+}
+
+/* Style for the button hover state */
+button:hover {
+    background-color: #257b8a;
+}
+
+/* Additional options for Faculty */
+label[for="facultyRole"],
+select#facultyRole {
+    display: none;
+}
+
+/* Additional options for Faculty when selected */
+select[name="userType"] option[value="Faculty"]:checked~label[for="facultyRole"],
+select[name="userType"] option[value="Faculty"]:checked~select#facultyRole {
+    display: block;
+}
+.error-message {
+    color: #ff0000;
+    font-size: 14px;
+    margin-top: 5px;
 }

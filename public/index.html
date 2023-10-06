@@ -1,34 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Login Page</title>
-    <link rel="stylesheet" href="./style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
 </head>
 <body>
-    <div class="login-container">
-        <div class="login-image">
-            <img src="./faculty portal.png" alt="Company Logo">
-        </div>
-        <div class="login-form">
-            <h2>Login</h2>
-            <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" placeholder="Enter your username">
+    <header>
+        <img style="width: 100%;" src="./VRSEC-Main-Header.png">
+    </header>
+    <div class="container">
+        <h2>Sign up</h2>
+        <form id="signupForm">
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="fullName" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+            <div class="error-message" id="passwordError"></div>
+           
+            <label for="userType">User Type:</label>
+            <select id="userType" name="userType" required>
+                <option value="Admin">Admin</option>
+                <option value="Incharge">Incharge</option>
+                <option value="Faculty">Faculty</option>
+            </select>
+
+            <!-- Additional options for Faculty -->
+            <label for="facultyRole" id="facultyRoleLabel">Faculty Role:</label>
+            <select id="facultyRole" name="facultyRole">
+                <option value="Professor">Professor</option>
+                <option value="Assistant Professor">Assistant Professor</option>
+            </select> 
+            
+            <label for="department" id="departmentLabel">Department:</label>
+            <select id="department" name="department">
+                <option value="CSE">CSE</option>
+                <option value="IT">IT</option>
+                <option value="AIDS">AIDS</option>
+                <option value="ECE">ECE</option>
+                <option value="EIE">EIE</option>
+                <option value="EEE">EEE</option>
+                <option value="CIVIL">CIVIL</option>
+                <option value="MECH">MECH</option>
+            </select>
+            
+            <button type="submit">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-bar-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M6 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L12.293 7.5H6.5A.5.5 0 0 0 6 8Zm-2.5 7a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5Z"/>
+                </svg>
+                Sign Up
+            </button>
+            <br>
+            <br>
+            <a href="./login.html">Account Already Exists?</a>
             </div>
-            <div class="form-group">
-                <label for="designation">Designation:</label>
-                <select name="designation" id="designation">
-                    <option value="select an option">Select</option>
-                    <option value="option1">Admin</option>
-                    <option value="option2">Incharge</option>
-                    <option value="option3">Faculty</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Login">
-            </div>
-        </div>
+           
+        </form>
     </div>
+
+        <script>
+    // JavaScript code for displaying the additional options when "Faculty" or "Incharge" is selected
+    const userTypeSelect = document.getElementById("userType");
+    const facultyRoleSelect = document.getElementById("facultyRole");
+    const facultyRoleLabel = document.getElementById("facultyRoleLabel");
+    const departmentLabel = document.getElementById("departmentLabel");
+    const departmentSelect = document.getElementById("department");
+
+    function updateUserType() {
+        if (userTypeSelect.value === "Faculty") {
+            facultyRoleSelect.style.display = "block";
+            facultyRoleLabel.style.display = "block";
+        } else {
+            facultyRoleSelect.style.display = "none";
+            facultyRoleLabel.style.display = "none";
+        }
+
+        if (userTypeSelect.value === "Incharge") {
+            departmentSelect.style.display = "block";
+            departmentLabel.style.display = "block";
+        } else {
+            departmentSelect.style.display = "none";
+            departmentLabel.style.display = "none";
+        }
+    }
+
+    // Initial call to set the initial state based on the default selected option
+    updateUserType();
+
+    // Add event listener for userTypeSelect to update the fields when the selection changes
+    userTypeSelect.addEventListener("change", updateUserType);
+</script>
+<script>
+    // JavaScript code for handling password confirmation and error message
+    const passwordInput = document.getElementById("password");
+    const confirmPasswordInput = document.getElementById("confirmPassword");
+    const passwordError = document.getElementById("passwordError");
+    const signUpForm = document.getElementById("signupForm");
+
+    function validatePassword() {
+        const password = passwordInput.value;
+        const confirmPassword = confirmPasswordInput.value;
+
+        if (password !== confirmPassword) {
+            passwordError.textContent = "Passwords do not match";
+            confirmPasswordInput.setCustomValidity("Passwords do not match");
+        } else {
+            passwordError.textContent = "";
+            confirmPasswordInput.setCustomValidity("");
+        }
+    }
+
+    // Add event listeners for password and confirmPassword inputs
+    passwordInput.addEventListener("input", validatePassword);
+    confirmPasswordInput.addEventListener("input", validatePassword);
+
+    // Add event listener for the form submission
+    signUpForm.addEventListener("submit", function (event) {
+        const password = passwordInput.value;
+        const confirmPassword = confirmPasswordInput.value;
+
+        if (password !== confirmPassword) {
+            passwordError.textContent = "Passwords do not match";
+            confirmPasswordInput.setCustomValidity("Passwords do not match");
+            event.preventDefault(); // Prevent form submission
+        }
+    });
+</script>
+
+    
 </body>
 </html>
