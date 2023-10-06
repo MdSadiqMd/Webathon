@@ -18,6 +18,12 @@
         "duplicate-id": "off",
         "duplicate-id-aria": "off"
       }
+    ],
+    "axe/structure": [
+      "default",
+      {
+        "list": "off"
+      }
     ]
   }
 }

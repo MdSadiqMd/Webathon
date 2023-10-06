@@ -4,54 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://kit.fontawesome.com/20c5629a29.js" crossorigin="anonymous"></script>   
 </head>
 <body>
-    <header>
+    <div class="header">
+        <img class="img-logo" src="https://www.vrsiddhartha.ac.in/wp-content/uploads/2019/09/VRSEC-Main-Header.png" alt="VRSEC – Velagapudi Ramakrishna Siddhartha Engineering College">
         <h1>Admin Dashboard</h1>
-    </header>
-    <main>
-        <section class="faculty-requests">
-            <h2>Faculty Requests</h2>
-            <div class="faculty-request-card">
-                <p>Name: John Doe</p>
-                <p>Request: Adjust with some faculty</p>
-                <button class="accept-button">Accept</button>
-                <button class="decline-button">Decline</button>
-            </div>
-            <!-- More faculty request cards can be added dynamically -->
-        </section>
-        
-        <section class="control-panel">
-            <h2>Control Panel</h2>
-            <div class="control-panel-options">
-                <label for="branch">Branch:</label>
-                <select id="branch" name="branch">
-                    <option value="branch1">Branch 1</option>
-                    <option value="branch2">Branch 2</option>
-                    <!-- Add more branches as needed -->
-                </select>
-                
-                <label for="exam-type">Exam Type:</label>
-                <select id="exam-type" name="exam-type">
-                    <option value="mid-exam">Mid-Exam</option>
-                    <option value="sem-end-exam">SEM-End Exam</option>
-                </select>
-                
-                <label for="exam-date">Exam Date:</label>
-                <input type="date" id="exam-date" name="exam-date">
-                
-                <button id="view-room-list">View Room List</button>
-            </div>
-        </section>
-        
-        <section class="room-list">
-            <h2>Room List</h2>
-            <ul id="room-list">
-                <!-- Room list items will be rendered dynamically from the backend -->
-            </ul>
-        </section>
-    </main>
-    <script src="admin.js"></script>
+    </div>
+    <div class="main-font-page">
+        <div class="main1">
+            <section class="faculty-requests">
+                <h2>Faculty Requests</h2>
+                <ul id="request-card" class="faculty-request-card">
+                    <p class="request-Msg" id="requestchange"></p>
+                </ul>
+                <!-- More faculty request cards can be added dynamically -->
+            </section>
+            
+            <section class="control-panel">
+                <h2>Allotment Panel</h2>
+                <div class="control-panel-options">
+                    <div>
+                        <label for="branch">Branch:</label>
+                    <select style="cursor: pointer; " id="branch" placeholder="" name="branch">
+                        <option style="cursor: pointer;" value="">choose branch</option>
+                        <option style="cursor: pointer;" value="ECE">ECE</option>
+                        <option style="cursor: pointer;" value="CSE">CSE</option>
+                        <option style="cursor: pointer;" value="IT">IT</option>
+                        <option style="cursor: pointer;" value="EEE">EEE</option>
+                        <option style="cursor: pointer;" value="ME">ME</option>
+                        <option style="cursor: pointer;" value="CE">CE</option>
+                        <option style="cursor: pointer;" value="EIE">EIE</option>
+                        <!-- Add more branches as needed -->
+                    </select>
+                    </div>
+                    
+                    <div>
+                        <label for="exam-type">Exam Type:</label>
+                    <select style="cursor: pointer;" id="exam-type" name="exam-type">
+                        <option value="mid-exam">Mid-Exam-1</option>
+                        <option value="mid-exam">Mid-Exam-2</option>
+                        <option value="sem-end-exam">SEM-End Exam</option>
+                    </select>
+                    </div>
+                    
+                    <div>
+                        <label for="exam-date">Exam Date:</label>
+                    <input style="cursor: pointer;" type="date" id="exam-date" name="exam-date">
+                    </div>
+                    
+                    <button id="view-room-list">View Room List</button>
+                </div>
+            </section>
+        </div>
+        <div class="main2">            
+            <section class="room-list">
+                <div class="room-list-head">
+                    <h2 style="font-weight: bold;">Rooms List</h2>
+                    <button class="allote-btn">Allote the rooms</button>
+                </div>
+                <ul id="room-list">
+                    <!-- Room list items will be rendered dynamically from the backend -->
+                </ul>
+            </section>
+        </div>
+
+    </div>
+
+    <script src="./index.js"></script>
 </body>
 </html>
