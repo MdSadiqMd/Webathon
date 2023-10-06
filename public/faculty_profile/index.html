@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .Profile-photo {
+            height: 300px;
+            width: 300px;
+            border-radius: 50%;
+            border: 4px solid #000;
+            background-image: url("https://picsum.photos/200");
+            background-size: cover;
+            overflow: hidden;
+        }
+
+        table {
+            margin-top: 5px;
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            border-color: #000;
+            color: #000;
+        }
+
+        .attendence > div {
+            border: 1px solid #000;
+            border-radius: 2px;
+            display: inline-block;
+            padding: 5px;
+            margin: 5px;
+            grid-template-columns: repeat(auto-fit, minmax(10rem, 100%), 1fr);
+            position: relative;
+            transition: transform 0.2s, font-size 0.2s;
+            cursor: pointer;
+        }
+
+        .attendence > div:hover {
+            transform: scale(1.1);
+        }
+
+        .attendence > div span {
+            display: none;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            padding: 2px 5px;
+            border-radius: 2px;
+        }
+
+        .attendence > div.selected span {
+            display: block;
+        }
+
+        .leftcontainer {
+            padding-right: 10px;
+        }
+
+        .rightcontainer {
+            padding-left: 10px;
+            border-left: 2px solid #000;
+            justify-content: right;
+            align-items: right;
+        }
+
+        input[type="text"], input[type="date"], select {
+            width: 95%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="leftcontainer">
+        <div class="Profile-photo">
+        </div>
+        <ul>
+            <li>Name: Ratna Prabha Mam</li>
+            <li>Gender: Female</li>
+            <li>Department: ECE</li>
+            <li>Desination: Asst.Proffessor</li>
+            <li>Total Number of Invisilations: 5</li>
+            <li>Number of Invisilations Taken: 3</li>
+            <li>Number of Invisilations to be taken: 2</li>
+        </ul>
+    </div>
+    <div class="rightcontainer">
+        <div class="attendence">
+            <div>218W1A0401<span>❌</span></div>
+            <div>218W1A0402<span>❌</span></div>
+            <div>218W1A0403<span>❌</span></div>
+            <div>218W1A0404<span>❌</span></div>
+            <div>218W1A0405<span>❌</span></div>
+            <div>218W1A0406<span>❌</span></div>
+            <div>218W1A0407<span>❌</span></div>
+            <div>218W1A0408<span>❌</span></div>
+            <div>218W1A0409<span>❌</span></div>
+            <div>218W1A0410<span>❌</span></div>
+            <div>218W1A0411<span>❌</span></div>
+            <div>218W1A0412<span>❌</span></div>
+            <div>218W1A0413<span>❌</span></div>
+            <div>218W1A0414<span>❌</span></div>
+            <div>218W1A0415<span>❌</span></div>
+            <div>218W1A0416<span>❌</span></div>
+            <div>218W1A0417<span>❌</span></div>
+            <div>218W1A0418<span>❌</span></div>
+            <div>218W1A0419<span>❌</span></div>
+            <div>218W1A0420<span>❌</span></div>
+            <div>218W1A0421<span>❌</span></div>
+            <div>218W1A0422<span>❌</span></div>
+            <div>218W1A0423<span>❌</span></div>
+            <div>218W1A0424<span>❌</span></div>
+            <div>218W1A0425<span>❌</span></div>
+        </div>
+        <form id="absenceForm">
+            <label for="CourseName">Course Name:</label>
+            <input type="text" id="CourseName" name="CourseName" required>
+
+            <label for="ExamDate">Exam Date:</label>
+            <input type="date" id="ExamDate" name="ExamDate" required>
+
+            <label for="examType">Exam Type:</label>
+            <select id="examType" name="examType" required>
+                <option value="SEM-END">SEM-END</option>
+                <option value="SESSIONAL">SESSIONAL</option>
+                <option value="ASSIGNMENT">ASSIGNMENT</option>
+            </select>
+
+            <button type="button" id="markAbsenceBtn">Mark Absence</button>
+            <p id="errorMsg" style="color: red;"></p>
+        </form>
+        <table>
+            <thead>
+            <tr>
+                <th>S.No</th>
+                <th>Course</th>
+                <th>Exam Date</th>
+                <th>Exam Type</th>
+                <th>Action</th> 
+            </tr>
+            </thead>
+            <tbody id="absenceTableBody">
+                <!-- Table rows for absences will be dynamically added here -->
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    // Add event listener for marking absence
+    document.getElementById("markAbsenceBtn").addEventListener("click", function () {
+        const courseName = document.getElementById("CourseName").value;
+        const examDate = document.getElementById("ExamDate").value;
+        const examType = document.getElementById("examType").value;
+
+        // Get the selected student IDs by checking the clicked divs
+        const selectedStudentIDs = [];
+        document.querySelectorAll('.attendence > div.selected').forEach(div => {
+            const studentID = div.textContent.trim();
+            selectedStudentIDs.push(studentID);
+        });
+
+        if (courseName && examDate && examType && selectedStudentIDs.length > 0) {
+            const table = document.querySelector("table");
+            const tbody = table.querySelector("tbody");
+
+            // Create rows for each selected student
+            selectedStudentIDs.forEach(studentID => {
+                const row = document.createElement("tr");
+
+                // Populate the row with cells
+                row.innerHTML = `
+                    <td>${studentID}</td>
+                    <td>${courseName}</td>
+                    <td>${examDate}</td>
+                    <td>${examType}</td>
+                    <td><button class="deleteBtn">Delete</button></td>
+                `;
+
+                // Add the row to the table body
+                tbody.appendChild(row);
+            });
+
+            // Clear the form inputs
+            document.getElementById("CourseName").value = "";
+            document.getElementById("ExamDate").value = "";
+            document.getElementById("examType").value = "SEM-END";
+
+            // Clear the error message
+            document.getElementById("errorMsg").textContent = "";
+        } else {
+            // Display an error message if any of the form fields are empty or no students are selected
+            if (selectedStudentIDs.length === 0) {
+                document.getElementById("errorMsg").textContent = "Please select one or more students before marking absence.";
+            } else {
+                document.getElementById("errorMsg").textContent = "Please fill in all fields before marking absence.";
+            }
+        }
+    });
+
+    // Add event listener for delete button clicks
+    document.querySelector("table").addEventListener("click", function (e) {
+        if (e.target.classList.contains("deleteBtn")) {
+            e.target.closest("tr").remove();
+        }
+    });
+
+    // Add event listeners for selecting students
+    document.querySelectorAll('.attendence > div').forEach(div => {
+        div.addEventListener("click", () => {
+            // Toggle the "selected" class on click to allow multiple selections
+            div.classList.toggle("selected");
+        });
+    });
+</script>
+</body>
+</html>
