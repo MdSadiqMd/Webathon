@@ -6,7 +6,6 @@ const mongoose = require('mongoose');
 const app = express();
 
 // Load environment variables from a .env file or process.env
-
 require('dotenv').config();
 
 // Import your routes here
@@ -15,7 +14,7 @@ const departmentRoutes = require('./routes/departmentRoutes');
 const facultyRoutes = require('./routes/facultyRoutes');
 
 // Connect to MongoDB using Mongoose
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/MongoDataBase', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
