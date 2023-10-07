@@ -63,8 +63,16 @@ body {
     justify-content: flex-start;
     align-items: center;
     overflow-y: auto;
+    border-radius: 18px;
+    box-shadow:0px 0px 10px rgba(0, 0, 0, 0.2);
 }
+.main-font-page::-webkit-scrollbar {
+    display: none;
+}   
 
+.userData{
+    align-self: flex-start;
+}
 /* Heading styles */
 h1 {
     font-size: 24px;
@@ -335,9 +343,19 @@ h2 {
     flex: 1;
     padding: 10px;
     align-self: flex-start;
-    border: 2px solid #000; /* Added a black border */
-    border-radius: 5px;
-    width: 25%; /* Set the width to 25% */
+    border-top: 2px solid #000; /* Added a black border */
+    border-right: 2px solid #000; /* Added a black border */
+    border-radius: 20px;
+    width: 10%; /* Set the width to 25% */
+    margin-right: 15px;
+    margin-top: 15px;
+    margin-left: 15px;
+    padding-left: 25px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .Profile-photo {
@@ -348,15 +366,21 @@ h2 {
     background-image: url("https://picsum.photos/200");
     background-size: cover;
     overflow: hidden;
+    margin-bottom: 10px;
 }
 
 /* Right container styles */
 .rightContainer {
     flex: 2;
-    padding: 10px;
+    padding: 20px;
     width: 75%;
-    height: 100%;
+    height: 90%;
     align-self: flex-start;
+    border-left: 2px solid #000;
+    border-bottom: 2px solid #000;
+    border-radius: 20px;  
+    margin: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 table {
     margin-top: 5px;
@@ -402,9 +426,10 @@ th {
     padding: 2px 5px;
     border-radius: 2px;
 }
-.attendance > div.selected span {
+
+.numClicked{
     display: block;
-    background-color: #333; /* Change background color in selected state */
+    background-color: red;
 }
 
 input[type="text"], input[type="date"], select {
