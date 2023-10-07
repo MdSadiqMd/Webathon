@@ -1,5 +1,4 @@
 let requestCardMsg=document.getElementById("requestchange");
-let roomList=document.getElementById("room-list");
 let requestCard=document.getElementById("request-card");
 const faculty_count=100
 
@@ -18,9 +17,6 @@ function create_request_faculty_ele(eachFaculty){
     facultyItem.appendChild(facultyDiv) 
 
     let facultyLabel=document.createElement('span')
-
-    
-
     
 
     if (eachFaculty["shifting_faculty_name"]!==null){
@@ -85,4 +81,61 @@ if (faculty_count!=0){
     }
 }else{
     requestCardMsg.textContent="No Faculty Requests"
+}
+
+// fs.writeFile("./data_req_faculty.json", JSON.stringify(users), (err) => {
+//     if (err) {
+//       return res.status(500).json({ error: "Error saving user data" });
+//     }
+//     return res.status(201).json({ status: "success", id: newUserId });
+//   });
+let table=document.createElement('table')
+table.classList.add("table-Style")
+let tr1=document.createElement('tr')
+tr1.classList.add("row-head")
+let th1=document.createElement('th')
+th1.textContent="Faculty Name"
+let th2=document.createElement('th')
+th2.textContent="Room No"
+let th3=document.createElement('th')
+th3.textContent="Timing"
+tr1.appendChild(th1)
+tr1.appendChild(th2)
+tr1.appendChild(th3)
+tr1.classList.add("row-head-style")
+
+function create_room_ele(eachRoom){
+    let tr2=document.createElement('tr')
+    let td1=document.createElement('td')
+    td1.textContent=eachRoom["faculty_name"]
+    let td2=document.createElement('td')
+    td2.textContent=eachRoom["room_no"]
+    let td3=document.createElement('td')
+    td3.textContent=eachRoom["timings"]
+    tr2.appendChild(td1)
+    tr2.appendChild(td2)
+    tr2.appendChild(td3)
+    tr2.classList.add("row-head-style")
+    
+    table.appendChild(tr2)
+
+    
+}
+
+let roomList=document.getElementById("room-list");
+
+let roomListMsg=document.getElementById("roomList-para")
+let roomsListCount=0
+
+if (roomsListCount!=0){
+    roomListMsg.textContent="No rooms to allote"
+}else{
+    let roomsArray=[{"faculty_name":"Bitchip","room_no":247,"timings":"2:10 PM"},
+    {"faculty_name":"Wrapsafe","room_no":217,"timings":"2:19 PM"}]
+
+    table.appendChild(tr1)
+    roomList.appendChild(table)
+    for (let eachRoom of roomsArray){
+        create_room_ele(eachRoom)
+    }
 }
