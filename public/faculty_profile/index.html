@@ -35,11 +35,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>08/06/2004</td>
-                        <td>320</td>
-                        <td>2:30-5:30</td>
-                    </tr>
+                    <!--Mongo data-->
                 </tbody>
             </table>
         </div>
@@ -137,6 +133,14 @@
         </div>
     </div>
 </div>
+<script>
+    // Fetch data from the server and insert it into the table
+    fetch('/data')
+      .then(response => response.text())
+      .then(data => {
+        document.querySelector('table tbody').innerHTML = data;
+      });
+</script>
 <script src="./index.js"></script>
 </body>
 </html>

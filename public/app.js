@@ -1,83 +1,75 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
+const Data=require('./dataModel')
 
 const app = express();
+const port = 3000;
 
-mongoose.connect('mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.10.6', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+// MongoDB Atlas connection URI (replace with your own)
+const mongoURI = 'mongodb+srv://MdSadiqMd:Millionaire4950@cluster0.0l8s00u.mongodb.net/';
+
+// Connect to MongoDB Atlas
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log('Connected to MongoDB Atlas');
+  })
+  .catch(err => {
+    console.error('Error connecting to MongoDB Atlas:', err);
+  });
+
+// Middleware to serve static files (e.g., HTML)
+app.use(express.static('public'));
+
+// Define a route to fetch data from MongoDB
+app.get('/allotment', (req, res) => {
+  // Query the MongoDB collection to fetch data
+  Data.find({})
+  .then(data => {
+    // Generate the HTML table rows based on the retrieved data
+    const tbodyContent = data.map(item => `
+      <tr>
+        <td>${item.date}</td>
+        <td>${item.value}</td>
+        <td>${item.time}</td>
+      </tr>
+    `).join('');
+
+    // Send the HTML response with the dynamically generated <tbody> content
+    const htmlResponse = `<tbody>${tbodyContent}</tbody>`;
+    res.send(htmlResponse);
+  })
+  .catch(err => {
+    console.error(err);
+    res.status(500).send('Error fetching data from MongoDB');
+  });
+
 });
 
-const db = mongoose.connection;
+app.get('/request', (req, res) => {
+  // Query the MongoDB collection to fetch data
+  Data.find({}, (err, data) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Error fetching data from MongoDB');
+      return;
+    }
 
-db.on('error', (error) => {
-  console.error('Connection error:', error);
+    // Generate the HTML table rows based on the retrieved data
+    const tbodyContent = data.map(item => `
+      <tr>
+        <td>${item.date}</td>
+        <td>${item.value}</td>
+        <td>${item.time}</td>
+      </tr>
+    `).join('');
+
+    // Send the HTML response with the dynamically generated <tbody> content
+    const htmlResponse = `<tbody>${tbodyContent}</tbody>`;
+    res.send(htmlResponse);
+  });
 });
 
-db.once('open', () => {
-  console.log('Connected to MongoDB');
-});
-
-// Define Mongoose Schema and Model (User Schema and Model)
-const userSchema = new mongoose.Schema({
-  name: String,
-  gender: String,
-  department: String,
-  designation: String,
-  totalInvisilations: Number,
-  takenInvisilations: Number,
-  toBeTakenInvisilations: Number,
-});
-
-const User = mongoose.model('User', userSchema);
-
-// Middleware
-app.use(bodyParser.json());
-
-// API routes
-// Fetch all users
-app.get('/api/users', async (req, res) => {
-  try {
-    const users = await User.find();
-    res.json(users);
-  } catch (error) {
-    res.status(500).json({ error: 'Failed to fetch users' });
-  }
-});
-
-// Create a new user
-app.post('/api/users', async (req, res) => {
-  const {
-    name,
-    gender,
-    department,
-    designation,
-    totalInvisilations,
-    takenInvisilations,
-    toBeTakenInvisilations,
-  } = req.body;
-
-  try {
-    const newUser = new User({
-      name,
-      gender,
-      department,
-      designation,
-      totalInvisilations,
-      takenInvisilations,
-      toBeTakenInvisilations,
-    });
-
-    const savedUser = await newUser.save();
-    res.status(201).json(savedUser);
-  } catch (error) {
-    res.status(400).json({ error: 'Failed to create user' });
-  }
-});
-
-// Start the server
-const port = process.env.PORT || 3000;
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+  console.log(`Server is listening on port ${port}`);
 });
+
