@@ -4,7 +4,458 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="./style.css">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Basic styles for the body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #E8E2E2;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header styles */
+.header {
+    background-color: #E8E2E2;
+    color: #F99417;
+    text-align: center;
+    /* padding: 20px; */
+    font-size: 30px;
+    padding-bottom: 0;
+}
+.img-logo{
+    width: 100%;
+}
+
+/* Main content container */
+.main1{
+    max-width: 2000px;
+    width: 90%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+@media screen and (max-width:768px){
+    .main1{
+        width: 95%;
+    }
+}
+.main2{   
+    margin-top: 10px;
+    max-width: 2000px;
+    width: 90%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+@media screen and (max-width:768px){
+    .main2{
+        width: 95%;
+    }
+}
+.main-font-page{
+    padding: 20px;
+    background-color: #A6D1E6;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-y: auto;
+    border-radius: 18px;
+    box-shadow:0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+.main-font-page::-webkit-scrollbar {
+    display: none;
+}   
+
+.userData{
+    align-self: flex-start;
+}
+/* Heading styles */
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Section headings */
+h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+/* Faculty request card styles */
+.faculty-request-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 0;
+}
+
+.faculty-request-card p {
+    font-size: 16px;
+    margin: 5px 0;
+}
+.roomsList-cont{
+    /* overflow-y: auto; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    padding-left: 0;
+}
+.table-Style{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.row-head-style{
+    display: flex;
+    width: 90%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.request-Msg{
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+}
+
+/* Buttons for accepting and declining faculty requests */
+.accept-button,
+.decline-button {
+    background-color: #333;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    margin-right: 10px;
+}
+
+.control-panel{
+    width: 100%;
+}
+/* Control panel options */
+.control-panel-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.control-panel-options label {
+    font-weight: bold;
+}
+
+.control-panel-options select,
+.control-panel-options input[type="date"] {
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+/* View room list button */
+#view-room-list {
+    background-color: #333;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+/* Room list styles */
+.room-list ul {
+    list-style-type: none;
+    padding-left: 0;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.room-list li {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+} 
+
+/* Style for buttons to change teachers in room list */
+.change-teacher-button {
+    background-color: #333;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+/* Allote section*/
+.room-list-head{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+}
+.allote-btn{
+    cursor: pointer;
+    color: white;
+    background-color: aqua;
+    border: none;
+    border-radius: 14px;
+    outline: none;
+    padding: 10px;
+    font-size: 20px;
+}
+
+/* Req_Faculty section  */
+
+.faculty_i{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+    background-color: #fff;
+    margin-bottom: 10px;
+    border-radius: 14px;
+    padding: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+.faculty_i_head{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+    background-color: #fff;
+    margin-bottom: 10px;
+    border-top-right-radius: 14px;
+    border-top-left-radius: 14px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+.arrow-span{
+    font-size: 30px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+}
+.req-attri{
+    color: #333;
+    font-weight: bolder;
+    font-size: 35px;
+}
+.facultyDiv{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.shifting_name{
+    color: rgb(11, 154, 231);
+    font-weight: bold;
+    font-size: 20px;
+    transform: translateX(25%) translateY(-45%);
+    margin-left: 10px;
+}
+.faculty_label{
+    background-color: transparent;
+    border: 1px solid red;
+    color: red;
+    border-radius: 14px;
+    font-size: 10px;
+    padding: 5px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+}
+.shifting_label{
+    border-color: green;
+    color: green;
+}
+
+.faculty_name{
+    color: brown;
+    font-weight: 900;
+    font-size: 18px;
+}
+
+.btn-Div{
+    background-color: transparent;
+    border: 1px solid lightgrey;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    border: none;
+}
+.btn-wrong{
+    color: #fff;
+    background-color: red;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 10px;
+    border: none;
+    margin-right: 3px;
+    cursor: pointer;
+    border-radius: 14px;
+}
+.btn-correct{
+    color: #fff;
+    border-radius: 14px;
+    background-color: green;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Flex container for left and right content */
+.container-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+/* Left container styles */
+.leftcontainer {
+    flex: 1;
+    padding: 10px;
+    align-self: flex-start;
+    border-top: 2px solid #000; /* Added a black border */
+    border-right: 2px solid #000; /* Added a black border */
+    border-radius: 20px;
+    width: 10%; /* Set the width to 25% */
+    margin-right: 15px;
+    margin-top: 15px;
+    margin-left: 15px;
+    padding-left: 25px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Profile-photo {
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+    border: 4px solid #000;
+    background-image: url("https://picsum.photos/200");
+    background-size: cover;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+/* Right container styles */
+.rightContainer {
+    flex: 2;
+    padding: 20px;
+    width: 75%;
+    height: 90%;
+    align-self: flex-start;
+    border-left: 2px solid #000;
+    border-bottom: 2px solid #000;
+    border-radius: 20px;  
+    margin: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+table {
+    margin-top: 5px;
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    border-color: #000;
+    color: #000;
+}
+
+.attendence > div {
+    border: 1px solid #000;
+    border-radius: 2px;
+    display: inline-block;
+    padding: 5px;
+    margin: 5px;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 100%), 1fr);
+    position: relative;
+    transition: transform 0.2s, font-size 0.2s;
+    cursor: pointer;
+}
+
+.attendence > div:hover {
+    transform: scale(1.1);
+}
+
+.attendence > div span {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 2px 5px;
+    border-radius: 2px;
+}
+
+.numClicked{
+    display: block;
+    background-color: red;
+}
+
+input[type="text"], input[type="date"], select {
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+    </style>
     <script src="https://kit.fontawesome.com/20c5629a29.js" crossorigin="anonymous"></script>  
 </head>
 <body>
@@ -14,10 +465,10 @@
             </div>
             <div class="userData">
                 <ul>
-                    <li>Name: Ratna Prabha Mam</li>
+                    <li>Name: Prabha Mam</li>
                     <li>Gender: Female</li>
                     <li>Department: ECE</li>
-                    <li>Designation: Department Incharge</li>
+                    <li>Designation: Istructor</li>
                 </ul>
             </div>
         </div>
@@ -35,9 +486,8 @@
                     <section class="control-panel">
                         <h2>Allotment Panel</h2>
                         <div class="control-panel-options">
-                            <div>
-                                <label for="branch">Branch:</label><p>ECE</p>
-                            </div>
+                            
+                            
                             <div>
                                 <label for="exam-type">Exam Type:</label>
                                 <select style="cursor: pointer;" id="exam-type" name="exam-type">
@@ -127,11 +577,127 @@
                                 <!-- Table rows for absences will be dynamically added here -->
                             </tbody>
                         </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="./index.js"></script>
+    <script>
+ let requestCardMsg = document.getElementById("requestchange");
+let requestCard = document.getElementById("request-card");
+
+// Sample data for faculty requests
+const facultyRequests = [
+    { faculty_name: "Barb", shifting_faculty_name: "Tin", date: "9/1/2023", room_no: 228 },
+    { faculty_name: "Bartholomeo", shifting_faculty_name: null, date: "4/9/2023", room_no: 224 }
+];
+
+// Function to create faculty request elements
+function createFacultyRequestElement(eachFaculty) {
+    let facultyItem = document.createElement('li');
+    facultyItem.classList.add("faculty_i");
+
+    let facultyDiv = document.createElement('div');
+    facultyDiv.classList.add("facultyDiv");
+
+    let facultyName = document.createElement('h1');
+    facultyName.textContent = eachFaculty["faculty_name"];
+    facultyName.classList.add("faculty_name");
+
+    facultyDiv.appendChild(facultyName);
+    facultyItem.appendChild(facultyDiv);
+
+    let facultyLabel = document.createElement('span');
+
+    if (eachFaculty["shifting_faculty_name"] !== null) {
+        facultyLabel.textContent = "Swap";
+        facultyLabel.classList.add("shifting_label");
+    } else {
+        facultyLabel.textContent = "Leave";
+    }
+
+    facultyLabel.classList.add("faculty_label");
+    facultyDiv.appendChild(facultyLabel);
+
+    let btnsDiv = document.createElement('div');
+    btnsDiv.classList.add("btn-Div");
+
+    let btnWrong = document.createElement('button');
+    btnWrong.classList.add("btn-wrong");
+    btnWrong.textContent = 'Decline';
+
+    let btnCorrect = document.createElement('button');
+    btnCorrect.classList.add("btn-correct");
+    btnCorrect.textContent = "Accept";
+    btnsDiv.appendChild(btnWrong);
+    btnsDiv.appendChild(btnCorrect);
+
+    facultyItem.appendChild(btnsDiv);
+
+    requestCard.appendChild(facultyItem);
+}
+
+if (facultyRequests.length > 0) {
+    let tableRow = document.createElement('li');
+    tableRow.classList.add("faculty_i_head");
+
+    let reqAttri = document.createElement('p');
+    reqAttri.textContent = "Requested Faculty";
+    reqAttri.classList.add("req-attri");
+
+    let btnAction = document.createElement('p');
+    btnAction.textContent = "Action";
+    btnAction.classList.add("req-attri");
+
+    tableRow.appendChild(reqAttri);
+    tableRow.appendChild(btnAction);
+
+    requestCard.appendChild(tableRow);
+
+    for (let eachFaculty of facultyRequests) {
+        createFacultyRequestElement(eachFaculty);
+    }
+} else {
+    requestCardMsg.textContent = "No Faculty Requests";
+}
+
+// Sample data for room list
+const roomsList = [
+    { faculty_name: "Bitchip", room_no: 247, timings: "2:10 PM" },
+    { faculty_name: "Wrapsafe", room_no: 217, timings: "2:19 PM" }
+];
+
+// Function to create room list elements
+function createRoomElement(eachRoom) {
+    let tr2 = document.createElement('tr');
+    let td1 = document.createElement('td');
+    td1.textContent = eachRoom["faculty_name"];
+    let td2 = document.createElement('td');
+    td2.textContent = eachRoom["room_no"];
+    let td3 = document.createElement('td');
+    td3.textContent = eachRoom["timings"];
+    tr2.appendChild(td1);
+    tr2.appendChild(td2);
+    tr2.appendChild(td3);
+    tr2.classList.add("row-head-style");
+
+    table.appendChild(tr2);
+}
+
+let roomList = document.getElementById("room-list");
+let roomListMsg = document.getElementById("roomList-para");
+
+if (roomsList.length > 0) {
+    table.appendChild(tr1);
+    roomList.appendChild(table);
+    for (let eachRoom of roomsList) {
+        createRoomElement(eachRoom);
+    }
+} else {
+    roomListMsg.textContent = "No rooms to allot";
+}
+
+    </script>
 </body>
 </html>

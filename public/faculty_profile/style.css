@@ -1,7 +1,12 @@
 ul {
     list-style: none;
 }
-
+body {
+    font-family: Arial, sans-serif;
+    background-color: #E8E2E2;
+    margin: 0;
+    padding: 0;
+}
 .container-wrapper {
     display: flex;
 }
@@ -10,6 +15,9 @@ ul {
     width: 100%;
     display: flex;
     flex-direction: row;
+    padding: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .Profile-photo {
@@ -73,17 +81,29 @@ th {
 
 .leftcontainer {
     padding-right: 10px;
+    margin-right: 5px;
     position: fixed; 
-    border: 1px solid #000; 
     border-radius: 5px; 
     justify-content: space-evenly;
+    border-top: 2px solid #000; /* Added a black border */
+    border-right: 2px solid #000; /* Added a black border */
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
-
+.card{
+    z-index: -1;
+    margin: 10px;
+    background-color: skyblue;
+}
 .rightcontainer {
     padding-left: 10px;
-    margin-left: 320px; 
+    margin-left: 350px; 
     justify-content: right;
     align-items: right;
+    border-left: 2px solid #000;
+    border-bottom: 2px solid #000;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
 input[type="text"], input[type="date"], select {

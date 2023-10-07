@@ -79,26 +79,30 @@
         }
     </script>
 
-    <script>
-        function login() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
+<script>
+    function login() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const userType = document.getElementById('userType').value;
 
-            // Check user credentials
-            if (username === 'user1' && password === 'password1') {
-                alert('Login successful for User 1');
-                // Redirect to User 1's dashboard or perform any other action
-            } else if (username === 'user2' && password === 'password2') {
-                alert('Login successful for User 2');
-                // Redirect to User 2's dashboard or perform any other action
-            } else if (username === 'user3' && password === 'password3') {
-                alert('Login successful for User 3');
-                // Redirect to User 3's dashboard or perform any other action
-            } else {
-                alert('Invalid username or password. Please try again.');
-            }
+        // Check user credentials
+        if (username === 'user1' && password === 'password1' && userType === 'Faculty') {
+            navigateToFacultyOption('./faculty_profile/index.html');
+        } else if (username === 'user2' && password === 'password2' && userType === 'Faculty') {
+            navigateToFacultyOption('./incharge_profile/index.html');
+        } else if (username === 'user3' && password === 'password3' && userType === 'Faculty') {
+            navigateToFacultyOption('./admin_profile/index.html');
+        } else {
+            alert('Invalid username or password. Please try again.');
         }
-    </script>
+    }
+
+    function navigateToFacultyOption(page) {
+        // Use the page parameter to navigate to the corresponding faculty option
+        window.location.href = page;
+    }
+</script>
+
    
 </body>
 </html>
