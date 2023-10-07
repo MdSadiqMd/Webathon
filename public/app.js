@@ -66,7 +66,7 @@ app.post('/request', (req, res) => {
   const newData = new Data({
     Date,
     'Room.No': RoomNo,
-    Request_Type,
+    Request_Type, // This should match the property name in your JSON data
     Timings,
     Status,
   });
