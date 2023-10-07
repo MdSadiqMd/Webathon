@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
-// Connect to MongoDB (Replace '<your-mongodb-connection-url>' with your actual MongoDB connection URL)
 mongoose.connect('mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.10.6', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
